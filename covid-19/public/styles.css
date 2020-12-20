@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    font-family: "Arial";
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.dropdown-flag{
+    height: 20px;
+    width: 30px;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+.MuiSelect-root img{
+    position: relative;
+    top: 4px;
+    border-radius: 0;
+    margin-right: 10px;
+}
+.infoboxes{
+    display: flex;
+    justify-content: space-between;
+}
+body{
+    background-color: #f5f6fa;
+}
+.app{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+@media (max-width : 990px){
+    .app{
+        flex-direction: column;
+    }
+}
+.app-left{
+    flex: 0.9;
+}
+
+.table{
+    margin-top: 10px;
+    overflow: scroll;
+    height: 400px;
+    overflow-x: hidden;
+    color: #6a5d5d;
+    background-color: #fff;
+}
+.table tr{
+    display: flex;
+    padding: 0.5rem;
+}
+.table td{
+    width: 33%;
+    text-align: left;
+}
+.table tr:nth-of-type(odd){
+    background-color: #f3f2f8;
+}
+.table-heading{
+    display: flex;
+    justify-content: space-between;
+}
+.MuiFormControl-root .MuiSelect-select{
+    padding: 10px;
+}
+.app-right h3{
+    position: relative;
+    top: 3px;
+}
+h4{
+    position: absolute;
+    right: 0;
+    top: -10px;
+}
+.table-heading{
+    position: relative;
+    padding-top: 10px;
+}
