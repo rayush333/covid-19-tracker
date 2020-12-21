@@ -1,12 +1,19 @@
 *{
     margin: 0;
-    font-family: "Arial";
+    
+    font-family: 'Montserrat', sans-serif;
 }
 .heading{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+}
+.heading h1{
+    /* color: #fc3c3c;
+    color: #a7c5eb; */
+    color: #65d6ce;
+    font-size: 2rem;
 }
 .dropdown-flag{
     height: 20px;
@@ -38,9 +45,15 @@ body{
     }
 }
 .app-left{
-    flex: 0.9;
+    flex: 0.7;
+    padding: 20px;
+    height: 100vh;
+    padding-top: 0;
 }
-
+.app-right{
+    flex: 0.3;
+    height: 100vh;
+}
 .table{
     margin-top: 10px;
     overflow: scroll;
@@ -79,4 +92,96 @@ h4{
 .table-heading{
     position: relative;
     padding-top: 10px;
+}
+.graph-heading{
+    margin: 15px;
+    margin-left: 0;
+}
+.map{
+    height: 470px;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-top: 16px;
+    box-shadow: 0 0 -4px rgba(0,0,0,0.5);
+}
+.map .leaflet-container{
+    height: 100%;
+}
+.line-graph{
+    position: relative;
+    top: 10px;
+}
+.info-flag img{
+    height: 80px;
+    background-size: cover;
+    border-radius: 8px;
+}
+.info-flag{
+    display: flex;
+    justify-content: center;
+}
+.info-cases, .info-recovered, .info-deaths {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+/* .info-cases{
+    color: #cc1034;
+}
+.info-recovered{
+    color: #7dd71d;
+}
+.info-deaths{
+    color: #393e46;
+} */
+.info-name{
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #555;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.infobox{
+    flex: 1;
+    cursor: pointer;
+}
+.infobox:not(:last-child){
+    margin-right: 15px;
+}
+.infobox-cases{
+    color: #cc1034;
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+.infobox-total{
+    color: #6c757d;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    margin-top: 15px !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background: #f5f6fa !important;
+	color: #333;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    }
+.red--selected{
+    border-top: 10px solid #fb4443;
+}
+.green--selected{
+border-top: 10px solid #7DD71D;
+}
+.black--selected{
+    border-top: 10px solid #393e46;
+}
+.red h2{
+    color: #fb4443;
+}
+.green h2{
+    color: #7DD71D;
+}
+.black h2{
+    color: #393e46;
 }
