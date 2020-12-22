@@ -50,7 +50,7 @@ function App(){
         console.log(res.data);
         updateinfo(res.data);
         setMapCenter([res.data.countryInfo.lat,res.data.countryInfo.long]);
-        setMapZoom(4);
+        setMapZoom(5);
         }
         function handleSort(event){
         setsort(event.target.value);
