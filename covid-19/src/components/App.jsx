@@ -3,7 +3,7 @@ import {FormControl, MenuItem, Select} from "@material-ui/core";
 import axios from "axios"; 
 import InfoBoxes from "./InfoBoxes";
 import Map from "./Map";
-import {Card,CardContent,Typography} from "@material-ui/core";
+import {Card,CardContent} from "@material-ui/core";
 import Table from "./Table";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
@@ -94,7 +94,7 @@ function App(){
            </div>
         </CardContent>
         </Card>
-    </div>;
+    </div>
 }
 
 export default App;
