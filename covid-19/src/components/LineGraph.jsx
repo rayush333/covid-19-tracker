@@ -65,18 +65,18 @@ const casesTypeColors = {
       half_op: "rgba(251, 68, 67, 0.5)"
     },
   };
-function LineGraph({casesType,country}) {
+function LineGraph({casesType,country, days}) {
     const [data,updatedata] = useState({});
     useEffect(()=>{
         async function getData(casesType,country){
             let res,chartData;
             if(country === 'worldwide')
-            {res = await axios.get("https://disease.sh/v3/covid-19/historical/all?lastdays=120");
+            {res = await axios.get("https://disease.sh/v3/covid-19/historical/all?lastdays="+days);
             chartData = buildChartData(res.data,casesType);
             }
             else
             {
-            res = await axios.get("https://disease.sh/v3/covid-19/historical/"+country+"?lastdays=120");
+            res = await axios.get("https://disease.sh/v3/covid-19/historical/"+country+"?lastdays="+days);
             console.log(res.data.timeline);
             chartData = buildChartData(res.data.timeline,casesType);
             }
@@ -84,7 +84,7 @@ function LineGraph({casesType,country}) {
             console.log(chartData);
         }
         getData(casesType,country);
-    },[casesType,country]);
+    },[casesType,country,days]);
     
     function buildChartData(data,casesType = 'cases'){
         let chartData = [];

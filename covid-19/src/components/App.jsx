@@ -14,9 +14,11 @@ function App(){
     const [table,settable] = useState([]);
     const [sortby,setsort] = useState("none");
     const options = [{name: "Total Cases", value: "cases" },{name: "Active Cases", value: "active"},{name: "Total Deaths", value: "deaths"},{name: "Recovered" , value: "recovered"},{name: "Total Tests", value: "tests"},{name: "Cases Today", value: "todayCases"},{name: 'Recovered Today', value: "todayRecovered"},{name: "Deaths Today", value: 'todayDeaths'},{name: "Cases per million",value: "casesPerOneMillion"},{name:"Recovered per million",value: "recoveredPerOneMillion"},{name:"Deaths per million",value: "deathsPerOneMillion"},{name:"Tests per million",value: "testsPerOneMillion"}];
+    
     const [mapCenter,setMapCenter] = useState([30,0]);
     const [mapZoom,setMapZoom] = useState(2);
     const [casesType,setCasesType] = useState('cases');
+    const [days,setdays] = useState(120);
     useEffect(()=>{
         getCountries();
         initialize();
@@ -44,19 +46,28 @@ function App(){
         setcountry(code);
         let res;
         if(code === "worldwide")
-        res=await axios.get("https://disease.sh/v3/covid-19/all");
+        {res=await axios.get("https://disease.sh/v3/covid-19/all");
+        setMapCenter([30,0]);
+        setMapZoom(2);
+        }
         else
+        {
         res = await axios.get("https://disease.sh/v3/covid-19/countries/"+code);
-        console.log(res.data);
-        updateinfo(res.data);
         setMapCenter([res.data.countryInfo.lat,res.data.countryInfo.long]);
         setMapZoom(5);
+        }
+        console.log(res.data);
+        updateinfo(res.data);
+        
         }
         function handleSort(event){
         setsort(event.target.value);
     }
     function handleCardClick(c){
         setCasesType(c);
+    }
+    function handleDays(event){
+        setdays(event.target.value);
     }
     return <div className="app">
     <div className="app-left">
@@ -88,9 +99,17 @@ function App(){
         </FormControl>
         </div>
            <Table data={table} sortby={sortby} />
-           <h3 className="graph-heading">{info.country || "Worldwide"} New {casesType==='cases'? "Cases" : casesType === 'recovered' ? "Recoveries" : "Deaths"}</h3>
+           <div style={{display: "flex", position: "relative"}}><h3 className="graph-heading">{info.country || "Worldwide"} New {casesType==='cases'? "Cases" : casesType === 'recovered' ? "Recoveries" : "Deaths"} </h3>
+           <FormControl style={{position: "absolute", top: "10px", right: "0"}}>
+            <Select variant="outlined" value={days} onChange={handleDays}>
+                <MenuItem key={0} value={120}>Monthly</MenuItem>
+                <MenuItem key={1} value={35}>Weekly</MenuItem>
+                <MenuItem key={2} value={10}>Daily</MenuItem> 
+            </Select>
+        </FormControl>
+        </div>
            <div className="line-graph">
-           <LineGraph casesType = {casesType} country = {currentcountry} />
+           <LineGraph casesType = {casesType} country = {currentcountry} days={days}/>
            </div>
         </CardContent>
         </Card>

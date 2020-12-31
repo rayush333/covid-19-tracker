@@ -185,3 +185,22 @@ border-top: 10px solid #7DD71D;
 .black h2{
     color: #393e46;
 }
+.MuiPaper-root{
+    height: fit-content;
+    padding-bottom: 25px;
+}
+@media (max-width: 500px){
+    p.MuiTypography-root{
+        font-size: 14px;
+    }
+    .infobox-cases{
+        font-size: 16px;
+    }
+    .infobox:not(:last-child){
+        margin-right: 5px;
+    }
+    div.MuiCardContent-root{
+        padding: 5px;
+        padding-bottom: 24px;
+    }
+}
